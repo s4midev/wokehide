@@ -17,6 +17,11 @@ func main() {
 
 	arg.MustParse(&a)
 
+	if a.Positional == "" {
+		fmt.Println("No woke supplied")
+		return
+	}
+
 	if IsBase64(a.Positional) {
 		exec.Command("xdg-open", DecodeBase64(a.Positional)).Start()
 		fmt.Println("Acquired the woke")
